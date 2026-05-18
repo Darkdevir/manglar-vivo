@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import MangleGame from "@/components/MangleGame";
+import MangleQuiz from "@/components/MangleQuiz";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -210,15 +212,40 @@ function Index() {
 
       {/* ZONA INTERACTIVA */}
       <section id="interactiva" className="py-20 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6" style={{ color: "#FBF9E4" }}>
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-10 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
             Zona Interactiva
           </h2>
-          <div
-            className="p-10 rounded-xl"
-            style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
-          >
-            <p className="text-lg">Próximamente...</p>
+
+          {/* BLOQUE 1 - JUEGO */}
+          <div className="mb-20">
+            <h3
+              className="text-2xl sm:text-3xl font-bold mb-3 text-center"
+              style={{ color: "#FBF9E4" }}
+            >
+              🌿 Empareja las Especies de Mangle 🌊
+            </h3>
+            <p className="text-center mb-8 text-sm sm:text-base" style={{ color: "#5B88B2" }}>
+              Arrastra cada especie hacia su característica correcta.
+            </p>
+            <MangleGame />
+          </div>
+
+          {/* BLOQUE 2 - TEST */}
+          <div>
+            <h3
+              className="text-2xl sm:text-3xl font-bold mb-3 text-center"
+              style={{ color: "#FBF9E4" }}
+            >
+              📝 Pon a prueba tus conocimientos
+            </h3>
+            <p className="text-center mb-8 text-sm sm:text-base" style={{ color: "#5B88B2" }}>
+              10 preguntas de opción múltiple. ¡Mucha suerte!
+            </p>
+            <MangleQuiz />
           </div>
         </div>
       </section>
