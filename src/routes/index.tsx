@@ -1,26 +1,258 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Manglares de la Ciénaga Grande — Conservación y Educación" },
+      {
+        name: "description",
+        content:
+          "Educación ambiental sobre la conservación de manglares en la Ciénaga Grande (Magdalena, Colombia) y la comunidad de pescadores de Criapez.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+const accordions = [
+  {
+    title: "🌿 1. Importancia de los manglares",
+    body: "Los manglares constituyen uno de los ecosistemas más importantes de la Ciénaga Grande, debido a que representan la base ecológica de la cual depende gran parte de la biodiversidad de la región. Estos ecosistemas desempeñan funciones fundamentales en la protección y equilibrio ambiental de las zonas costeras, ya que sus raíces sirven como refugio, área de reproducción y zonas de desove para diversas especies de peces, crustáceos y otros organismos acuáticos. Por esta razón, los manglares son considerados 'salas cuna' naturales que garantizan la permanencia de numerosas especies de importancia ecológica y económica. Los manglares también cumplen una función de filtración y descontaminación del agua, contribuyendo a mejorar la calidad hídrica mediante la retención de sedimentos y contaminantes. Actúan como barreras naturales frente a fenómenos marinos y climáticos, disminuyendo el impacto de vientos fuertes, oleaje y erosión costera.",
+  },
+  {
+    title: "🌊 2. Mitigación del cambio climático (carbono azul)",
+    body: "Los manglares contribuyen significativamente a la mitigación del cambio climático debido a su capacidad para capturar y almacenar grandes cantidades de carbono atmosférico, conocido como 'carbono azul'. Gracias a esta función, ayudan a disminuir la concentración de gases de efecto invernadero y contribuyen a la regulación de la temperatura ambiental. Adicionalmente, estos ecosistemas desempeñan un papel fundamental en la protección de las costas frente a los efectos asociados al cambio climático, especialmente la erosión costera y el aumento del nivel del mar. En regiones del Caribe colombiano, desde La Guajira hasta los departamentos de Atlántico y Bolívar, los manglares ayudan a reducir el deterioro de las líneas costeras, funcionando como barreras naturales que disminuyen la fuerza del oleaje y favorecen la estabilidad de los suelos.",
+  },
+  {
+    title: "🔥 3. Desafíos para la conservación",
+    body: "La conservación de los manglares en la Ciénaga Grande enfrenta diversos desafíos. Uno de los principales problemas corresponde a la degradación ocasionada por obras de infraestructura mal planificadas, especialmente la construcción de la Vía Parque Isla de Salamanca, la cual alteró los flujos naturales de agua y ocasionó el deterioro de extensas áreas de bosque de manglar. Otro desafío importante es la contaminación por residuos sólidos: plásticos, icopor, zapatos, cartón, y también residuos peligrosos como pañales desechables, jeringas y baterías. Las actividades humanas como la tala indiscriminada y la falta de conciencia ambiental han contribuido históricamente a la degradación. A ello se suman plagas como la oruga conocida como 'oreja de venado', además de cangrejos e iguanas que consumen los brotes de las plántulas y dificultan los procesos de restauración.",
+  },
+  {
+    title: "🐟 4. Afectaciones del cambio climático en la biodiversidad",
+    body: "El cambio climático ha generado importantes alteraciones en los ecosistemas de la Ciénaga Grande. Entre las principales consecuencias se encuentran el incremento de las temperaturas y las variaciones en los niveles de salinidad del agua, factores que han ocasionado episodios de mortandad masiva de peces y alteraciones en las dinámicas ecológicas del ecosistema. Las comunidades locales han percibido un aumento en la intensidad de fenómenos naturales como tormentas y huracanes, los cuales afectan la disponibilidad de recursos pesqueros, la estabilidad de los manglares y la supervivencia de múltiples especies.",
+  },
+  {
+    title: "🤝 5. Acciones de adaptación en la región",
+    body: "En la región de la Ciénaga Grande se han implementado diversas estrategias de adaptación. La restauración participativa de manglares mediante la siembra de especies nativas como mangle rojo, negro y blanco en zonas degradadas. La educación ambiental a través de la Cátedra de la Ciénaga Grande en instituciones educativas. La articulación entre conocimiento científico y saberes tradicionales de pescadores. El aprovechamiento de residuos sólidos mediante iniciativas de reciclaje y economía circular. Y el turismo regenerativo y científico como modelo económico sostenible.",
+  },
+  {
+    title: "🌱 6. Importancia de la sostenibilidad para comunidades ribereñas",
+    body: "La sostenibilidad es fundamental para garantizar el bienestar económico, social y ambiental de las comunidades ribereñas. Este enfoque permite que las actividades productivas se desarrollen de manera responsable, asegurando la conservación de recursos para futuras generaciones. Además de la pesca artesanal, la sostenibilidad ha favorecido la diversificación económica mediante el turismo comunitario, regenerativo y científico, así como 'negocios verdes' asociados al reciclaje y la restauración ambiental.",
+  },
+  {
+    title: "🌿 7. Beneficios de los viveros de manglar",
+    body: "Los viveros de manglar permiten la restauración de áreas degradadas y favorecen la recuperación de ecosistemas afectados. Ayudan a mitigar el cambio climático por su capacidad de captura de carbono. Las raíces de los manglares sirven como refugio y áreas de reproducción para especies acuáticas. Desde el punto de vista social y económico, los viveros fomentan alternativas productivas sostenibles como el turismo científico, y fortalecen el tejido social mediante jornadas comunitarias y educación ambiental.",
+  },
+  {
+    title: "🛠️ 8. Técnicas de cultivo en vivero",
+    body: "El cultivo de plántulas de manglar requiere técnicas específicas: preparación del sustrato con mezcla de lodo, arena y nutrientes naturales. Para el mangle rojo, la semilla debe ubicarse con la raíz hacia abajo y usarse rápidamente antes de 15 días. Las plántulas pasan por un proceso de aclimatación en la 'zona de castigo' (exposición temporal al sol) antes del trasplante definitivo. Se requiere control constante de plagas (orugas, cangrejos, iguanas) y mantenimiento hídrico adecuado.",
+  },
+  {
+    title: "🌳 9. Especies de manglar identificadas",
+    body: "En la Ciénaga Grande y Pueblo Viejo se identificaron cuatro especies: El MANGLE ROJO (Rhizophora mangle), base del ecosistema con raíces en forma de zancos. El MANGLE NEGRO (Avicennia germinans), con raíces aéreas llamadas neumatóforos (parecen dedos que salen del suelo). El MANGLE BLANCO (Laguncularia racemosa), conocido como 'bobo' por su versatilidad. Y el MANGLAR ZARAGOZA, una especie de transición entre el manglar y el bosque seco.",
+  },
+  {
+    title: "🎭 10. Cultura y tradición local",
+    body: "La comunidad de pescadores de Criapez en Pueblo Viejo conserva tradiciones como la danza del 'Pilón', donde hombres disfrazados realizan versos burlescos. También se conserva el uso medicinal de la corteza del mangle rojo para tratar afecciones cutáneas. La articulación entre el conocimiento científico y el saber tradicional ha permitido desarrollar proyectos de restauración más exitosos.",
+  },
+];
+
+const navLinks = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#aprende", label: "Aprende" },
+  { href: "#interactiva", label: "Zona Interactiva" },
+  { href: "#referencias", label: "Referencias" },
+];
+
+const references = [
+  "Salida de campo a Pueblo Viejo - Ciénaga Grande",
+  "Comunidad de pescadores de Criapez",
+  "Universidad del Magdalena - Ingeniería Agronómica",
+  "Cátedra de la Ciénaga Grande",
+  "Ramsar - Humedales de Importancia Internacional",
+];
 
 function Index() {
-  return <PlaceholderIndex />;
+  const [open, setOpen] = useState<number | null>(null);
+
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, hash: string) => {
+    e.preventDefault();
+    const el = document.querySelector(hash);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: "#122C4F" }}>
+      {/* NAV */}
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 border-b"
+        style={{ backgroundColor: "#122C4F", borderColor: "#5B88B2" }}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+          <span className="font-semibold tracking-tight" style={{ color: "#FBF9E4" }}>
+            🌿 Manglares CGSM
+          </span>
+          <ul className="flex flex-wrap gap-1 sm:gap-2">
+            {navLinks.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  onClick={(e) => scrollTo(e, l.href)}
+                  className="px-3 py-2 rounded-md text-sm transition-colors hover:bg-[#5B88B2]/30"
+                  style={{ color: "#FBF9E4" }}
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+
+      {/* INICIO */}
+      <section
+        id="inicio"
+        className="pt-32 pb-20 px-4 sm:px-6 flex items-center justify-center min-h-screen"
+      >
+        <div className="max-w-3xl mx-auto text-center">
+          <span
+            className="inline-block px-3 py-1 rounded-full text-xs font-medium tracking-wider mb-6 border"
+            style={{ color: "#FBF9E4", borderColor: "#5B88B2", backgroundColor: "rgba(91,136,178,0.15)" }}
+          >
+            ECOSISTEMA RAMSAR · MAGDALENA, COLOMBIA
+          </span>
+          <h1
+            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
+            style={{ color: "#FBF9E4" }}
+          >
+            Manglares de la Ciénaga Grande: Guardianes del Agua y la Vida
+          </h1>
+          <p className="text-lg sm:text-xl mb-6" style={{ color: "#5B88B2" }}>
+            Educación ambiental para la conservación de un ecosistema Ramsar en el Magdalena, Colombia
+          </p>
+          <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "#FBF9E4" }}>
+            Estudiantes de Ingeniería Agronómica de la Universidad del Magdalena visitaron Pueblo
+            Viejo y la Ciénaga Grande para conocer de cerca los procesos de restauración de
+            manglares. Allí compartieron con la comunidad de pescadores de Criapez, quienes trabajan
+            día a día por recuperar este ecosistema vital para la vida del Caribe colombiano.
+          </p>
+          <button
+            onClick={(e) => scrollTo(e, "#aprende")}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-medium text-white transition-transform hover:scale-105"
+            style={{ backgroundColor: "#5B88B2" }}
+          >
+            Explorar →
+          </button>
+        </div>
+      </section>
+
+      {/* APRENDE */}
+      <section id="aprende" className="py-20 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-10 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
+            Aprende
+          </h2>
+
+          <div className="space-y-4">
+            {accordions.map((item, i) => {
+              const isOpen = open === i;
+              return (
+                <div
+                  key={i}
+                  className="overflow-hidden border"
+                  style={{
+                    backgroundColor: "#FBF9E4",
+                    borderRadius: 12,
+                    borderColor: "#5B88B2",
+                  }}
+                >
+                  <button
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+                    style={{ color: "#000000" }}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-semibold text-base sm:text-lg">{item.title}</span>
+                    <span
+                      className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full text-white text-xl font-bold"
+                      style={{ backgroundColor: "#5B88B2" }}
+                    >
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div
+                      className="px-5 pb-5 pt-1 text-sm sm:text-base leading-relaxed border-t"
+                      style={{ color: "#000000", borderColor: "#5B88B2" }}
+                    >
+                      {item.body}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div
+            className="mt-10 p-6 rounded-xl text-white text-center text-base sm:text-lg leading-relaxed"
+            style={{ backgroundColor: "#5B88B2" }}
+          >
+            La Ciénaga Grande es un humedal de importancia internacional RAMSAR y un "aeropuerto" de
+            aves migratorias. Su conservación depende de la educación ambiental y el trabajo
+            conjunto entre comunidades, pescadores, universidades y autoridades.
+          </div>
+        </div>
+      </section>
+
+      {/* ZONA INTERACTIVA */}
+      <section id="interactiva" className="py-20 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6" style={{ color: "#FBF9E4" }}>
+            Zona Interactiva
+          </h2>
+          <div
+            className="p-10 rounded-xl"
+            style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
+          >
+            <p className="text-lg">Próximamente...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* REFERENCIAS */}
+      <section id="referencias" className="py-20 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-8 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
+            Referencias
+          </h2>
+          <div
+            className="p-6 sm:p-8 rounded-xl"
+            style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
+          >
+            <ul className="space-y-3 list-disc list-inside">
+              {references.map((r) => (
+                <li key={r} className="text-base sm:text-lg">
+                  {r}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        className="py-8 px-4 text-center text-sm border-t"
+        style={{ color: "#FBF9E4", borderColor: "#5B88B2" }}
+      >
+        © Universidad del Magdalena · Ingeniería Agronómica
+      </footer>
+    </div>
+  );
 }
