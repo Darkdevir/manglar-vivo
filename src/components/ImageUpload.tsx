@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 
-export default function ImageUpload({ alt }: { alt: string }) {
+export default function ImageUpload({ alt, initialSrc }: { alt: string; initialSrc?: string }) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [src, setSrc] = useState<string | null>(null);
+  const [src, setSrc] = useState<string | null>(initialSrc || null);
 
   const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

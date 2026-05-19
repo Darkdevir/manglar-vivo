@@ -87,7 +87,7 @@ const species = [
   {
     common: "Mangle Rojo",
     sci: "Rhizophora mangle",
-    image: "",
+    image: "f7013a17-b232-4d17-9d87-8155811f407f.jpg",
     credit: "Fuente: Aquarium de Biarritz, 2025",
     text: "Árbol de hasta 25 metros, reconocible por sus raíces en forma de zancos que parecen piernas elevándose sobre el agua. Es la base del ecosistema manglárico, ya que sus raíces atrapan sedimentos, crean nuevo suelo y sirven de refugio para peces y crustáceos (Elster et al., 1999). Su importancia radica en ser la primera línea de defensa contra la erosión costera y la 'sala cuna' de cientos de especies acuáticas.",
   },
@@ -267,7 +267,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt={`${s.common} (${s.sci})`} />
+                <ImageUpload alt={`${s.common} (${s.sci})`} initialSrc={s.image || undefined} />
                 <div className="p-5 flex flex-col gap-3">
                   <h3 className="text-xl font-bold">
                     {s.common} (<em>{s.sci}</em>)
