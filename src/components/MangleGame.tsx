@@ -179,7 +179,7 @@ export default function MangleGame() {
             const matchedId = matches[p.id];
             const matched = matchedId ? PAIRS.find((x) => x.id === matchedId) ?? null : null;
             return (
-              <React.Fragment key={p.id}>
+              <>
                 {/* Mobile header */}
                 <div className="md:hidden col-span-1 text-xs font-semibold uppercase tracking-wider mt-2" style={{ color: "#5B88B2" }}>
                   {p.name}
@@ -193,7 +193,7 @@ export default function MangleGame() {
                 <div className="col-span-1">
                   <DropZone pair={p} matched={matched} />
                 </div>
-              </React.Fragment>
+              </>
             );
           })}
         </div>
