@@ -80,6 +80,39 @@ const references = [
   "Espinosa Díaz, L. F., Rueda Hernández, M., Martínez, A., Correa Viloria, E., Varela Cabello, K., Serrano Ramírez, H., Díaz Serrano, L. A., Velásquez Arrieta, R., Cortes, I. C., Rojas, Y., Sierra, A. M., Dussan, M., & Ojeda Ochoa, K. A. (2023). Monitoreo de las condiciones ambientales y los cambios estructurales y funcionales de las comunidades vegetales y de los recursos pesqueros durante la rehabilitación de la Ciénaga Grande de Santa Marta (Conjunto de datos). OBIS Colombia. https://doi.org/10.15472/2poedl",
 ];
 
+const species = [
+  {
+    common: "Mangle Rojo",
+    sci: "Rhizophora mangle",
+    image: "",
+    credit: "Fuente: Aquarium de Biarritz, 2025",
+    text: "Árbol de hasta 25 metros, reconocible por sus raíces en forma de zancos que parecen piernas elevándose sobre el agua. Es la base del ecosistema manglárico, ya que sus raíces atrapan sedimentos, crean nuevo suelo y sirven de refugio para peces y crustáceos (Elster et al., 1999). Su importancia radica en ser la primera línea de defensa contra la erosión costera y la 'sala cuna' de cientos de especies acuáticas.",
+  },
+  {
+    common: "Mangle Negro",
+    sci: "Avicennia germinans",
+    image: "",
+    credit: "Fuente: Flora Fauna y Cultura - Riviera Maya, 2022",
+    text: "Árbol de hasta 15 metros con raíces aéreas verticales llamadas neumatóforos (parecen dedos que salen del suelo). Estas raíces permiten el intercambio de gases en suelos anegados. Es una especie altamente tolerante a la salinidad y contribuye a la estabilización del suelo y la captura de carbono azul (Bernal et al., 2024).",
+  },
+  {
+    common: "Mangle Blanco",
+    sci: "Laguncularia racemosa",
+    image: "",
+    credit: "Fuente: Vademécum de Salud y Ambiente, 2013",
+    text: "Árbol de hasta 12 metros, conocido localmente como 'bobo' por su versatilidad y adaptación a diferentes condiciones ambientales. Sus hojas son redondeadas con dos glándulas secretoras de sal en la base. Su función principal es colonizar zonas de transición y contribuir a la diversidad estructural del manglar (Ortiz Ruiz, 2002).",
+  },
+  {
+    common: "Mangle Zaragoza",
+    sci: "Conocarpus erectus",
+    image: "",
+    credit: "Fuente: Catálogo de Biodiversidad - EPA Cartagena",
+    text: "Árbol o arbusto de hasta 20 metros, común en zonas de transición entre el manglar y el bosque seco. A diferencia de los demás, no tiene raíces aéreas vistosas, pero es clave como especie de conexión ecológica. Su importancia radica en que sirve de hábitat para aves migratorias y estabiliza el suelo en áreas menos inundadas (Elster et al., 1999).",
+  },
+];
+
+const criapezImages = [1, 2, 3, 4, 5];
+
 function Index() {
   const [open, setOpen] = useState<number | null>(null);
 
