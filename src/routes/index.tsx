@@ -429,6 +429,13 @@ function Index() {
               ))}
             </ul>
           </div>
+          <p
+            className="mt-10 text-center text-sm italic"
+            style={{ color: "#5B88B2", opacity: 0.85 }}
+          >
+            Realizado por las estudiantes María de los Ángeles Delgado Villalobos y Vanessa Ginet
+            Zabalas Ariza
+          </p>
         </div>
       </section>
 
