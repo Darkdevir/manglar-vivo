@@ -12,30 +12,42 @@ import {
   type DragStartEvent,
 } from "@dnd-kit/core";
 
-type Pair = { id: string; name: string; trait: string };
+type Pair = { id: string; common: string; sci: string; trait: string };
 
 const PAIRS: Pair[] = [
   {
     id: "rojo",
-    name: "Mangle Rojo (Rhizophora mangle)",
+    common: "Mangle Rojo",
+    sci: "Rhizophora mangle",
     trait: "Raíces en forma de zancos. Base del ecosistema.",
   },
   {
     id: "negro",
-    name: "Mangle Negro (Avicennia germinans)",
+    common: "Mangle Negro",
+    sci: "Avicennia germinans",
     trait: "Neumatóforos (raíces aéreas que parecen dedos).",
   },
   {
     id: "blanco",
-    name: "Mangle Blanco (Laguncularia racemosa)",
+    common: "Mangle Blanco",
+    sci: "Laguncularia racemosa",
     trait: "Conocido como 'bobo' por su versatilidad.",
   },
   {
     id: "zaragoza",
-    name: "Mangle Zaragoza",
+    common: "Mangle Zaragoza",
+    sci: "Conocarpus erectus",
     trait: "Especie de transición entre manglar y bosque seco.",
   },
 ];
+
+function SpeciesName({ pair }: { pair: Pair }) {
+  return (
+    <span>
+      {pair.common} (<em>{pair.sci}</em>)
+    </span>
+  );
+}
 
 function DraggableCard({ pair }: { pair: Pair }) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({ id: pair.id });
@@ -54,7 +66,7 @@ function DraggableCard({ pair }: { pair: Pair }) {
         minHeight: 96,
       }}
     >
-      {pair.name}
+      <SpeciesName pair={pair} />
     </div>
   );
 }
@@ -98,7 +110,7 @@ function DropZone({
       <div className="font-medium">{pair.trait}</div>
       {matched && (
         <div className="mt-2 text-xs sm:text-sm font-semibold" style={{ color: "#1c5a3a" }}>
-          ✓ {matched.name}
+          <>✓ <SpeciesName pair={matched} /></>
         </div>
       )}
     </div>
@@ -178,7 +190,7 @@ export default function MangleGame() {
               <>
                 <div className="col-span-1">
                   <div className="md:hidden text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#5B88B2" }}>
-                    {p.name}
+                    <SpeciesName pair={p} />
                   </div>
                   {isMatched ? <EmptySlot /> : <DraggableCard pair={p} />}
                 </div>
@@ -206,7 +218,7 @@ export default function MangleGame() {
                 minWidth: 220,
               }}
             >
-              {activePair.name}
+              <SpeciesName pair={activePair} />
             </div>
           ) : null}
         </DragOverlay>

@@ -52,7 +52,11 @@ const accordions = [
   },
   {
     title: "🌳 9. Especies de manglar identificadas",
-    body: "En la Ciénaga Grande y Pueblo Viejo se identificaron cuatro especies: El MANGLE ROJO (Rhizophora mangle), base del ecosistema con raíces en forma de zancos; el MANGLE NEGRO (Avicennia germinans), con raíces aéreas llamadas neumatóforos; el MANGLE BLANCO (Laguncularia racemosa), conocido como 'bobo' por su versatilidad; y el MANGLAR ZARAGOZA, una especie de transición entre el manglar y el bosque seco (Elster et al., 1999; Ortiz Ruiz, 2002).",
+    body: (
+      <>
+        En la Ciénaga Grande y Pueblo Viejo se identificaron cuatro especies: El MANGLE ROJO (<em>Rhizophora mangle</em>), base del ecosistema con raíces en forma de zancos; el MANGLE NEGRO (<em>Avicennia germinans</em>), con raíces aéreas llamadas neumatóforos; el MANGLE BLANCO (<em>Laguncularia racemosa</em>), conocido como 'bobo' por su versatilidad; y el MANGLAR ZARAGOZA (<em>Conocarpus erectus</em>), una especie de transición entre el manglar y el bosque seco (Elster et al., 1999; Ortiz Ruiz, 2002).
+      </>
+    ),
   },
   {
     title: "🎭 10. Cultura y tradición local",
@@ -63,7 +67,9 @@ const accordions = [
 const navLinks = [
   { href: "#inicio", label: "Inicio" },
   { href: "#aprende", label: "Aprende" },
+  { href: "#galeria", label: "Galería" },
   { href: "#interactiva", label: "Zona Interactiva" },
+  { href: "#criapez", label: "Criapez" },
   { href: "#referencias", label: "Referencias" },
 ];
 
@@ -75,6 +81,39 @@ const references = [
   "Ortiz Ruiz, J. J. (2002). Reforestación de manglar en la Ciénaga Grande de Santa Marta, Caribe colombiano. En Memorias del XI Seminario Latinoamericano y II Congreso Colombiano de Ciencias del Mar (pp. 1-6). FAO.",
   "Espinosa Díaz, L. F., Rueda Hernández, M., Martínez, A., Correa Viloria, E., Varela Cabello, K., Serrano Ramírez, H., Díaz Serrano, L. A., Velásquez Arrieta, R., Cortes, I. C., Rojas, Y., Sierra, A. M., Dussan, M., & Ojeda Ochoa, K. A. (2023). Monitoreo de las condiciones ambientales y los cambios estructurales y funcionales de las comunidades vegetales y de los recursos pesqueros durante la rehabilitación de la Ciénaga Grande de Santa Marta (Conjunto de datos). OBIS Colombia. https://doi.org/10.15472/2poedl",
 ];
+
+const species = [
+  {
+    common: "Mangle Rojo",
+    sci: "Rhizophora mangle",
+    image: "",
+    credit: "Fuente: Aquarium de Biarritz, 2025",
+    text: "Árbol de hasta 25 metros, reconocible por sus raíces en forma de zancos que parecen piernas elevándose sobre el agua. Es la base del ecosistema manglárico, ya que sus raíces atrapan sedimentos, crean nuevo suelo y sirven de refugio para peces y crustáceos (Elster et al., 1999). Su importancia radica en ser la primera línea de defensa contra la erosión costera y la 'sala cuna' de cientos de especies acuáticas.",
+  },
+  {
+    common: "Mangle Negro",
+    sci: "Avicennia germinans",
+    image: "",
+    credit: "Fuente: Flora Fauna y Cultura - Riviera Maya, 2022",
+    text: "Árbol de hasta 15 metros con raíces aéreas verticales llamadas neumatóforos (parecen dedos que salen del suelo). Estas raíces permiten el intercambio de gases en suelos anegados. Es una especie altamente tolerante a la salinidad y contribuye a la estabilización del suelo y la captura de carbono azul (Bernal et al., 2024).",
+  },
+  {
+    common: "Mangle Blanco",
+    sci: "Laguncularia racemosa",
+    image: "",
+    credit: "Fuente: Vademécum de Salud y Ambiente, 2013",
+    text: "Árbol de hasta 12 metros, conocido localmente como 'bobo' por su versatilidad y adaptación a diferentes condiciones ambientales. Sus hojas son redondeadas con dos glándulas secretoras de sal en la base. Su función principal es colonizar zonas de transición y contribuir a la diversidad estructural del manglar (Ortiz Ruiz, 2002).",
+  },
+  {
+    common: "Mangle Zaragoza",
+    sci: "Conocarpus erectus",
+    image: "",
+    credit: "Fuente: Catálogo de Biodiversidad - EPA Cartagena",
+    text: "Árbol o arbusto de hasta 20 metros, común en zonas de transición entre el manglar y el bosque seco. A diferencia de los demás, no tiene raíces aéreas vistosas, pero es clave como especie de conexión ecológica. Su importancia radica en que sirve de hábitat para aves migratorias y estabiliza el suelo en áreas menos inundadas (Elster et al., 1999).",
+  },
+];
+
+const criapezImages = [1, 2, 3, 4, 5];
 
 function Index() {
   const [open, setOpen] = useState<number | null>(null);
@@ -211,6 +250,47 @@ function Index() {
         </div>
       </section>
 
+      {/* GALERÍA DE MANGLARES */}
+      <section id="galeria" className="py-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-10 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
+            🌿 Galería de Manglares
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {species.map((s) => (
+              <div
+                key={s.sci}
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <div
+                  className="w-full aspect-[4/3] flex items-center justify-center text-center text-sm px-4"
+                  style={{ backgroundColor: "rgba(91,136,178,0.15)", color: "#5B88B2" }}
+                >
+                  {s.image ? (
+                    <img src={s.image} alt={`${s.common} (${s.sci})`} className="w-full h-full object-cover" />
+                  ) : (
+                    <span>Imagen pendiente — subir manualmente</span>
+                  )}
+                </div>
+                <div className="p-5 flex flex-col gap-3">
+                  <h3 className="text-xl font-bold">
+                    {s.common} (<em>{s.sci}</em>)
+                  </h3>
+                  <p className="text-xs italic" style={{ color: "#5B88B2" }}>
+                    {s.credit}
+                  </p>
+                  <p className="text-sm sm:text-base leading-relaxed">{s.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ZONA INTERACTIVA */}
       <section id="interactiva" className="py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
@@ -247,6 +327,76 @@ function Index() {
               10 preguntas de opción múltiple. ¡Mucha suerte!
             </p>
             <MangleQuiz />
+          </div>
+        </div>
+      </section>
+
+      {/* CRIAPEZ */}
+      <section id="criapez" className="py-20 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-10 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
+            🤝 Criapez: Guardianes de la Ciénaga
+          </h2>
+          <div
+            className="p-6 sm:p-8 rounded-xl space-y-5 text-base sm:text-lg leading-relaxed"
+            style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
+          >
+            <p>
+              En la Isla del Rosario, dentro de la Ciénaga Grande, trabaja la Asociación de
+              Pescadores Artesanales, Amigos del Puerto, conocidos como Criapez. Lo que comenzó
+              como un grupo de pescadores se ha convertido hoy en una Entidad sin Ánimo de Lucro
+              que lidera la restauración de manglares y el cuidado del territorio.
+            </p>
+            <p>
+              Actualmente son 23 asociados, incluyendo jóvenes y mujeres, y llevan 28 años de
+              trabajo formal —los cumplen en julio de 2026. Hace unos 15 años comenzaron a
+              gestionar residuos sólidos, y desde hace ocho o diez años se dedican con fuerza a la
+              restauración ecológica.
+            </p>
+            <p>
+              Entre lo que hacen, cultivan peces sábalo en estanques, mantienen un vivero propio
+              con plántulas de mangle rojo, negro y blanco, y han logrado recuperar zonas muy
+              afectadas como los kilómetros 38, 21 y 21.800 de la Vía Parque Isla de Salamanca.
+            </p>
+            <p>
+              También reciben estudiantes y académicos para hacer turismo científico y
+              comunitario, y promueven la Cátedra de la Ciénaga Grande en las escuelas locales.
+            </p>
+            <p>
+              Una de sus mayores fortalezas es la alianza con la Universidad del Magdalena, que
+              les ha permitido unir el conocimiento tradicional del pescador con el conocimiento
+              científico. Así han logrado que sus proyectos de restauración sean más exitosos que
+              muchos diseñados solo desde una oficina.
+            </p>
+            <p>
+              Su visión va más allá del beneficio inmediato: buscan retribuirle a la naturaleza lo
+              que les ha dado y asegurar que las futuras generaciones puedan seguir viviendo de la
+              ciénaga. Han pasado de sentirse víctimas de los problemas ambientales a ser
+              protagonistas de las soluciones.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            {criapezImages.map((n) => (
+              <figure
+                key={n}
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <div
+                  className="w-full aspect-[4/3] flex items-center justify-center text-center text-sm px-4"
+                  style={{ backgroundColor: "rgba(91,136,178,0.15)", color: "#5B88B2" }}
+                >
+                  Imagen {n} — subir manualmente
+                </div>
+                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
