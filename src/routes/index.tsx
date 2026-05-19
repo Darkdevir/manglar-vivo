@@ -101,7 +101,7 @@ const species = [
   {
     common: "Mangle Blanco",
     sci: "Laguncularia racemosa",
-    image: "https://i.imgur.com/SGKN378.jpeg",
+    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20blanco.JPG",
     credit: "Fuente: Vademécum de Salud y Ambiente, 2013",
     text: "Árbol de hasta 12 metros, conocido localmente como 'bobo' por su versatilidad y adaptación a diferentes condiciones ambientales. Sus hojas son redondeadas con dos glándulas secretoras de sal en la base. Su función principal es colonizar zonas de transición y contribuir a la diversidad estructural del manglar (Ortiz Ruiz, 2002).",
   },
