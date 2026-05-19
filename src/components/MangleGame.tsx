@@ -66,7 +66,7 @@ function DraggableCard({ pair }: { pair: Pair }) {
         minHeight: 96,
       }}
     >
-      {pair.name}
+      <SpeciesName pair={pair} />
     </div>
   );
 }
@@ -110,7 +110,7 @@ function DropZone({
       <div className="font-medium">{pair.trait}</div>
       {matched && (
         <div className="mt-2 text-xs sm:text-sm font-semibold" style={{ color: "#1c5a3a" }}>
-          ✓ {matched.name}
+          <>✓ <SpeciesName pair={matched} /></>
         </div>
       )}
     </div>
@@ -190,7 +190,7 @@ export default function MangleGame() {
               <>
                 <div className="col-span-1">
                   <div className="md:hidden text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#5B88B2" }}>
-                    {p.name}
+                    <SpeciesName pair={p} />
                   </div>
                   {isMatched ? <EmptySlot /> : <DraggableCard pair={p} />}
                 </div>
@@ -218,7 +218,7 @@ export default function MangleGame() {
                 minWidth: 220,
               }}
             >
-              {activePair.name}
+              <SpeciesName pair={activePair} />
             </div>
           ) : null}
         </DragOverlay>
