@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import MangleGame from "@/components/MangleGame";
 import MangleQuiz from "@/components/MangleQuiz";
-import ImageUpload from "@/components/ImageUpload";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -87,28 +87,28 @@ const species = [
   {
     common: "Mangle Rojo",
     sci: "Rhizophora mangle",
-    image: "https://i.imgur.com/D0qZvcN.jpeg",
+    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20rojo.jpg",
     credit: "Fuente: Aquarium de Biarritz, 2025",
     text: "Árbol de hasta 25 metros, reconocible por sus raíces en forma de zancos que parecen piernas elevándose sobre el agua. Es la base del ecosistema manglárico, ya que sus raíces atrapan sedimentos, crean nuevo suelo y sirven de refugio para peces y crustáceos (Elster et al., 1999). Su importancia radica en ser la primera línea de defensa contra la erosión costera y la 'sala cuna' de cientos de especies acuáticas.",
   },
   {
     common: "Mangle Negro",
     sci: "Avicennia germinans",
-    image: "https://i.imgur.com/qG4NVuY.jpeg",
+    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20negro.jpg",
     credit: "Fuente: Flora Fauna y Cultura - Riviera Maya, 2022",
     text: "Árbol de hasta 15 metros con raíces aéreas verticales llamadas neumatóforos (parecen dedos que salen del suelo). Estas raíces permiten el intercambio de gases en suelos anegados. Es una especie altamente tolerante a la salinidad y contribuye a la estabilización del suelo y la captura de carbono azul (Bernal et al., 2024).",
   },
   {
     common: "Mangle Blanco",
     sci: "Laguncularia racemosa",
-    image: "https://i.imgur.com/SGKN378.jpeg",
+    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20blanco.JPG",
     credit: "Fuente: Vademécum de Salud y Ambiente, 2013",
     text: "Árbol de hasta 12 metros, conocido localmente como 'bobo' por su versatilidad y adaptación a diferentes condiciones ambientales. Sus hojas son redondeadas con dos glándulas secretoras de sal en la base. Su función principal es colonizar zonas de transición y contribuir a la diversidad estructural del manglar (Ortiz Ruiz, 2002).",
   },
   {
     common: "Mangle Zaragoza",
     sci: "Conocarpus erectus",
-    image: "https://i.imgur.com/6b1AmkX.jpeg",
+    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20zaragosa.jpg",
     credit: "Fuente: Tyler Duby, iNaturalist, 2025 (CC-BY-NC)",
     text: "Árbol o arbusto de hasta 20 metros, común en zonas de transición entre el manglar y el bosque seco. A diferencia de los demás, no tiene raíces aéreas vistosas, pero es clave como especie de conexión ecológica. Su importancia radica en que sirve de hábitat para aves migratorias y estabiliza el suelo en áreas menos inundadas (Elster et al., 1999).",
   },
@@ -267,7 +267,13 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt={`${s.common} (${s.sci})`} initialSrc={s.image || undefined} />
+                <img
+                  src={s.image}
+                  alt={`${s.common} (${s.sci})`}
+                  className="w-full aspect-[4/3] object-cover"
+                  loading="lazy"
+                  draggable={false}
+                />
                 <div className="p-5 flex flex-col gap-3">
                   <h3 className="text-xl font-bold">
                     {s.common} (<em>{s.sci}</em>)
@@ -340,7 +346,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 1" initialSrc="https://i.imgur.com/vkOuytO.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%201.jpg" alt="Criapez - imagen 1" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -349,7 +355,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 2" initialSrc="https://i.imgur.com/sPBeq9u.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%202.jpg" alt="Criapez - imagen 2" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -361,7 +367,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 3" initialSrc="https://i.imgur.com/2RTGZxC.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%203.jpg" alt="Criapez - imagen 3" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -370,7 +376,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 4" initialSrc="https://i.imgur.com/pWbNg3N.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%204.jpg" alt="Criapez - imagen 4" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -379,7 +385,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 5" initialSrc="https://i.imgur.com/wOM53TQ.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%205.jpg" alt="Criapez - imagen 5" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
