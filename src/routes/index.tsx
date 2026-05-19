@@ -52,7 +52,11 @@ const accordions = [
   },
   {
     title: "🌳 9. Especies de manglar identificadas",
-    body: "En la Ciénaga Grande y Pueblo Viejo se identificaron cuatro especies: El MANGLE ROJO (Rhizophora mangle), base del ecosistema con raíces en forma de zancos; el MANGLE NEGRO (Avicennia germinans), con raíces aéreas llamadas neumatóforos; el MANGLE BLANCO (Laguncularia racemosa), conocido como 'bobo' por su versatilidad; y el MANGLAR ZARAGOZA, una especie de transición entre el manglar y el bosque seco (Elster et al., 1999; Ortiz Ruiz, 2002).",
+    body: (
+      <>
+        En la Ciénaga Grande y Pueblo Viejo se identificaron cuatro especies: El MANGLE ROJO (<em>Rhizophora mangle</em>), base del ecosistema con raíces en forma de zancos; el MANGLE NEGRO (<em>Avicennia germinans</em>), con raíces aéreas llamadas neumatóforos; el MANGLE BLANCO (<em>Laguncularia racemosa</em>), conocido como 'bobo' por su versatilidad; y el MANGLAR ZARAGOZA (<em>Conocarpus erectus</em>), una especie de transición entre el manglar y el bosque seco (Elster et al., 1999; Ortiz Ruiz, 2002).
+      </>
+    ),
   },
   {
     title: "🎭 10. Cultura y tradición local",
