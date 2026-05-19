@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import MangleGame from "@/components/MangleGame";
 import MangleQuiz from "@/components/MangleQuiz";
-import ImageUpload from "@/components/ImageUpload";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
