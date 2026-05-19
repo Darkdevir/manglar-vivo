@@ -274,9 +274,6 @@ function Index() {
                   loading="lazy"
                   draggable={false}
                 />
-                <p className="text-xs italic px-5 pt-3" style={{ color: "#5B88B2" }}>
-                  {s.credit}
-                </p>
                 <div className="p-5 flex flex-col gap-3">
                   <h3 className="text-xl font-bold">
                     {s.common} (<em>{s.sci}</em>)
