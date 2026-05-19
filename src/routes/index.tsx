@@ -342,7 +342,7 @@ function Index() {
                   className="rounded-xl overflow-hidden border flex flex-col"
                   style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
                 >
-                  <ImageUpload alt={`Criapez - imagen ${n}`} />
+                  <ImageUpload alt={`Criapez - imagen ${n}`} initialSrc={`/Cria%20${n}.jpg`} />
                   <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                     Fotografía: María de los Ángeles Delgado Villalobos, 2026
                   </figcaption>
@@ -357,7 +357,7 @@ function Index() {
                   className="rounded-xl overflow-hidden border flex flex-col"
                   style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
                 >
-                  <ImageUpload alt={`Criapez - imagen ${n}`} />
+                  <ImageUpload alt={`Criapez - imagen ${n}`} initialSrc={`/Cria%20${n}.jpg`} />
                   <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                     Fotografía: María de los Ángeles Delgado Villalobos, 2026
                   </figcaption>
