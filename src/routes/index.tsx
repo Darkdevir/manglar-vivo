@@ -108,7 +108,7 @@ const species = [
   {
     common: "Mangle Zaragoza",
     sci: "Conocarpus erectus",
-    image: "https://i.imgur.com/6b1AmkX.jpeg",
+    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20zaragosa.jpg",
     credit: "Fuente: Tyler Duby, iNaturalist, 2025 (CC-BY-NC)",
     text: "Árbol o arbusto de hasta 20 metros, común en zonas de transición entre el manglar y el bosque seco. A diferencia de los demás, no tiene raíces aéreas vistosas, pero es clave como especie de conexión ecológica. Su importancia radica en que sirve de hábitat para aves migratorias y estabiliza el suelo en áreas menos inundadas (Elster et al., 1999).",
   },
