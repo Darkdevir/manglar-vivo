@@ -159,38 +159,33 @@ export default function MangleGame() {
       )}
 
       <DndContext sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
-          {/* Column headers */}
-          <h4
-            className="hidden md:block font-semibold mb-1 text-center uppercase tracking-wider text-sm"
-            style={{ color: "#FBF9E4" }}
-          >
+        {/* Desktop headers */}
+        <div className="hidden md:grid grid-cols-2 gap-x-6 mb-1">
+          <h4 className="font-semibold text-center uppercase tracking-wider text-sm" style={{ color: "#FBF9E4" }}>
             Especies
           </h4>
-          <h4
-            className="hidden md:block font-semibold mb-1 text-center uppercase tracking-wider text-sm"
-            style={{ color: "#FBF9E4" }}
-          >
+          <h4 className="font-semibold text-center uppercase tracking-wider text-sm" style={{ color: "#FBF9E4" }}>
             Características
           </h4>
+        </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
           {PAIRS.map((p) => {
             const isMatched = Object.values(matches).includes(p.id);
             const matchedId = matches[p.id];
             const matched = matchedId ? PAIRS.find((x) => x.id === matchedId) ?? null : null;
             return (
               <>
-                {/* Mobile header */}
-                <div className="md:hidden col-span-1 text-xs font-semibold uppercase tracking-wider mt-2" style={{ color: "#5B88B2" }}>
-                  {p.name}
-                </div>
                 <div className="col-span-1">
+                  <div className="md:hidden text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#5B88B2" }}>
+                    {p.name}
+                  </div>
                   {isMatched ? <EmptySlot /> : <DraggableCard pair={p} />}
                 </div>
-                <div className="md:hidden col-span-1 text-xs font-semibold uppercase tracking-wider mt-2" style={{ color: "#5B88B2" }}>
-                  Característica
-                </div>
                 <div className="col-span-1">
+                  <div className="md:hidden text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#5B88B2" }}>
+                    Característica
+                  </div>
                   <DropZone pair={p} matched={matched} />
                 </div>
               </>
