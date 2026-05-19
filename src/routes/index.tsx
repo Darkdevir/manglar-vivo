@@ -336,33 +336,54 @@ function Index() {
           <div className="space-y-5 mb-10">
             {/* Fila 1: 2 imágenes centradas */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:max-w-2xl sm:mx-auto">
-              {[1, 2].map((n) => (
-                <figure
-                  key={n}
-                  className="rounded-xl overflow-hidden border flex flex-col"
-                  style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-                >
-                  <ImageUpload alt={`Criapez - imagen ${n}`} initialSrc={`/Cria%20${n}.jpg`} />
-                  <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                    Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                  </figcaption>
-                </figure>
-              ))}
+              <figure
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <ImageUpload alt="Criapez - imagen 1" initialSrc="https://i.imgur.com/vkOuytO.jpeg" />
+                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                </figcaption>
+              </figure>
+              <figure
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <ImageUpload alt="Criapez - imagen 2" initialSrc="https://i.imgur.com/sPBeq9u.jpeg" />
+                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                </figcaption>
+              </figure>
             </div>
             {/* Fila 2: 3 imágenes en cuadrícula */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {[3, 4, 5].map((n) => (
-                <figure
-                  key={n}
-                  className="rounded-xl overflow-hidden border flex flex-col"
-                  style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-                >
-                  <ImageUpload alt={`Criapez - imagen ${n}`} initialSrc={`/Cria%20${n}.jpg`} />
-                  <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                    Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                  </figcaption>
-                </figure>
-              ))}
+              <figure
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <ImageUpload alt="Criapez - imagen 3" initialSrc="https://i.imgur.com/2RTGZxC.jpeg" />
+                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                </figcaption>
+              </figure>
+              <figure
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <ImageUpload alt="Criapez - imagen 4" initialSrc="https://i.imgur.com/pWbNg3N.jpeg" />
+                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                </figcaption>
+              </figure>
+              <figure
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <ImageUpload alt="Criapez - imagen 5" initialSrc="https://i.imgur.com/wOM53TQ.jpeg" />
+                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                </figcaption>
+              </figure>
             </div>
           </div>
 
