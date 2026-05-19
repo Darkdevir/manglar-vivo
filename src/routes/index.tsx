@@ -114,7 +114,7 @@ const species = [
   },
 ];
 
-const criapezImages = [1, 2, 3, 4, 5];
+
 
 function Index() {
   const [open, setOpen] = useState<number | null>(null);
