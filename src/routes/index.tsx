@@ -87,7 +87,7 @@ const species = [
   {
     common: "Mangle Rojo",
     sci: "Rhizophora mangle",
-    image: "https://i.imgur.com/D0qZvcN.jpeg",
+    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20rojo.jpg",
     credit: "Fuente: Aquarium de Biarritz, 2025",
     text: "Árbol de hasta 25 metros, reconocible por sus raíces en forma de zancos que parecen piernas elevándose sobre el agua. Es la base del ecosistema manglárico, ya que sus raíces atrapan sedimentos, crean nuevo suelo y sirven de refugio para peces y crustáceos (Elster et al., 1999). Su importancia radica en ser la primera línea de defensa contra la erosión costera y la 'sala cuna' de cientos de especies acuáticas.",
   },
