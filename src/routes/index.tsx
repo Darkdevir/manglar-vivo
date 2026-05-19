@@ -331,6 +331,76 @@ function Index() {
         </div>
       </section>
 
+      {/* CRIAPEZ */}
+      <section id="criapez" className="py-20 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-10 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
+            🤝 Criapez: Guardianes de la Ciénaga
+          </h2>
+          <div
+            className="p-6 sm:p-8 rounded-xl space-y-5 text-base sm:text-lg leading-relaxed"
+            style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
+          >
+            <p>
+              En la Isla del Rosario, dentro de la Ciénaga Grande, trabaja la Asociación de
+              Pescadores Artesanales, Amigos del Puerto, conocidos como Criapez. Lo que comenzó
+              como un grupo de pescadores se ha convertido hoy en una Entidad sin Ánimo de Lucro
+              que lidera la restauración de manglares y el cuidado del territorio.
+            </p>
+            <p>
+              Actualmente son 23 asociados, incluyendo jóvenes y mujeres, y llevan 28 años de
+              trabajo formal —los cumplen en julio de 2026. Hace unos 15 años comenzaron a
+              gestionar residuos sólidos, y desde hace ocho o diez años se dedican con fuerza a la
+              restauración ecológica.
+            </p>
+            <p>
+              Entre lo que hacen, cultivan peces sábalo en estanques, mantienen un vivero propio
+              con plántulas de mangle rojo, negro y blanco, y han logrado recuperar zonas muy
+              afectadas como los kilómetros 38, 21 y 21.800 de la Vía Parque Isla de Salamanca.
+            </p>
+            <p>
+              También reciben estudiantes y académicos para hacer turismo científico y
+              comunitario, y promueven la Cátedra de la Ciénaga Grande en las escuelas locales.
+            </p>
+            <p>
+              Una de sus mayores fortalezas es la alianza con la Universidad del Magdalena, que
+              les ha permitido unir el conocimiento tradicional del pescador con el conocimiento
+              científico. Así han logrado que sus proyectos de restauración sean más exitosos que
+              muchos diseñados solo desde una oficina.
+            </p>
+            <p>
+              Su visión va más allá del beneficio inmediato: buscan retribuirle a la naturaleza lo
+              que les ha dado y asegurar que las futuras generaciones puedan seguir viviendo de la
+              ciénaga. Han pasado de sentirse víctimas de los problemas ambientales a ser
+              protagonistas de las soluciones.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            {criapezImages.map((n) => (
+              <figure
+                key={n}
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <div
+                  className="w-full aspect-[4/3] flex items-center justify-center text-center text-sm px-4"
+                  style={{ backgroundColor: "rgba(91,136,178,0.15)", color: "#5B88B2" }}
+                >
+                  Imagen {n} — subir manualmente
+                </div>
+                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* REFERENCIAS */}
       <section id="referencias" className="py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
