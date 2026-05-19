@@ -159,54 +159,56 @@ export default function MangleGame() {
       )}
 
       <DndContext sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h4
-              className="font-semibold mb-3 text-center uppercase tracking-wider text-sm"
-              style={{ color: "#FBF9E4" }}
-            >
-              Especies
-            </h4>
-            <div className="space-y-3 min-h-[100px]">
-              {remaining.length === 0 ? (
-                <div
-                  className="text-center py-6 italic text-sm"
-                  style={{ color: "#FBF9E4" }}
-                >
-                  ¡Todas emparejadas!
-                </div>
-              ) : (
-                remaining.map((p) => <DraggableCard key={p.id} pair={p} />)
-              )}
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+          {/* Column headers */}
+          <h4
+            className="hidden md:block font-semibold mb-1 text-center uppercase tracking-wider text-sm"
+            style={{ color: "#FBF9E4" }}
+          >
+            Especies
+          </h4>
+          <h4
+            className="hidden md:block font-semibold mb-1 text-center uppercase tracking-wider text-sm"
+            style={{ color: "#FBF9E4" }}
+          >
+            Características
+          </h4>
 
-          <div>
-            <h4
-              className="font-semibold mb-3 text-center uppercase tracking-wider text-sm"
-              style={{ color: "#FBF9E4" }}
-            >
-              Características
-            </h4>
-            <div className="space-y-3">
-              {PAIRS.map((p) => {
-                const matchedId = matches[p.id];
-                const matched = matchedId ? PAIRS.find((x) => x.id === matchedId) ?? null : null;
-                return <DropZone key={p.id} pair={p} matched={matched} />;
-              })}
-            </div>
-          </div>
+          {PAIRS.map((p) => {
+            const isMatched = Object.values(matches).includes(p.id);
+            const matchedId = matches[p.id];
+            const matched = matchedId ? PAIRS.find((x) => x.id === matchedId) ?? null : null;
+            return (
+              <React.Fragment key={p.id}>
+                {/* Mobile header */}
+                <div className="md:hidden col-span-1 text-xs font-semibold uppercase tracking-wider mt-2" style={{ color: "#5B88B2" }}>
+                  {p.name}
+                </div>
+                <div className="col-span-1">
+                  {isMatched ? <EmptySlot /> : <DraggableCard pair={p} />}
+                </div>
+                <div className="md:hidden col-span-1 text-xs font-semibold uppercase tracking-wider mt-2" style={{ color: "#5B88B2" }}>
+                  Característica
+                </div>
+                <div className="col-span-1">
+                  <DropZone pair={p} matched={matched} />
+                </div>
+              </React.Fragment>
+            );
+          })}
         </div>
 
         <DragOverlay>
           {activePair ? (
             <div
-              className="px-4 py-3 rounded-xl border-2 font-medium shadow-xl"
+              className="px-4 py-3 rounded-xl border-2 font-medium shadow-xl flex items-center justify-center text-center"
               style={{
                 backgroundColor: "#FBF9E4",
                 color: "#000000",
                 borderColor: "#5B88B2",
                 cursor: "grabbing",
+                minHeight: 96,
+                minWidth: 220,
               }}
             >
               {activePair.name}
