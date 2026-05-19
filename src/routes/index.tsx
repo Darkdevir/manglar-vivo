@@ -250,6 +250,47 @@ function Index() {
         </div>
       </section>
 
+      {/* GALERÍA DE MANGLARES */}
+      <section id="galeria" className="py-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-10 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
+            🌿 Galería de Manglares
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {species.map((s) => (
+              <div
+                key={s.sci}
+                className="rounded-xl overflow-hidden border flex flex-col"
+                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+              >
+                <div
+                  className="w-full aspect-[4/3] flex items-center justify-center text-center text-sm px-4"
+                  style={{ backgroundColor: "rgba(91,136,178,0.15)", color: "#5B88B2" }}
+                >
+                  {s.image ? (
+                    <img src={s.image} alt={`${s.common} (${s.sci})`} className="w-full h-full object-cover" />
+                  ) : (
+                    <span>Imagen pendiente — subir manualmente</span>
+                  )}
+                </div>
+                <div className="p-5 flex flex-col gap-3">
+                  <h3 className="text-xl font-bold">
+                    {s.common} (<em>{s.sci}</em>)
+                  </h3>
+                  <p className="text-xs italic" style={{ color: "#5B88B2" }}>
+                    {s.credit}
+                  </p>
+                  <p className="text-sm sm:text-base leading-relaxed">{s.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ZONA INTERACTIVA */}
       <section id="interactiva" className="py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
