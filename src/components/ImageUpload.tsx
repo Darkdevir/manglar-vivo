@@ -20,7 +20,7 @@ export default function ImageUpload({ alt }: { alt: string }) {
       aria-label={`Subir imagen de ${alt}`}
     >
       {src ? (
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
+        <img src={src} alt={alt} className="group w-full aspect-[4/3] text-center text-sm px-4 relative overflow-hidden cursor-pointer flex-col flex items-center justify-center" />
       ) : (
         <span className="flex flex-col items-center gap-2 transition-transform group-hover:scale-105">
           <svg
