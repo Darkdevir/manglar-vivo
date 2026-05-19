@@ -267,7 +267,16 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt={`${s.common} (${s.sci})`} initialSrc={s.image || undefined} />
+                <img
+                  src={s.image}
+                  alt={`${s.common} (${s.sci})`}
+                  className="w-full aspect-[4/3] object-cover"
+                  loading="lazy"
+                  draggable={false}
+                />
+                <p className="text-xs italic px-5 pt-3" style={{ color: "#5B88B2" }}>
+                  {s.credit}
+                </p>
                 <div className="p-5 flex flex-col gap-3">
                   <h3 className="text-xl font-bold">
                     {s.common} (<em>{s.sci}</em>)
