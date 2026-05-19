@@ -12,30 +12,42 @@ import {
   type DragStartEvent,
 } from "@dnd-kit/core";
 
-type Pair = { id: string; name: string; trait: string };
+type Pair = { id: string; common: string; sci: string; trait: string };
 
 const PAIRS: Pair[] = [
   {
     id: "rojo",
-    name: "Mangle Rojo (Rhizophora mangle)",
+    common: "Mangle Rojo",
+    sci: "Rhizophora mangle",
     trait: "Raíces en forma de zancos. Base del ecosistema.",
   },
   {
     id: "negro",
-    name: "Mangle Negro (Avicennia germinans)",
+    common: "Mangle Negro",
+    sci: "Avicennia germinans",
     trait: "Neumatóforos (raíces aéreas que parecen dedos).",
   },
   {
     id: "blanco",
-    name: "Mangle Blanco (Laguncularia racemosa)",
+    common: "Mangle Blanco",
+    sci: "Laguncularia racemosa",
     trait: "Conocido como 'bobo' por su versatilidad.",
   },
   {
     id: "zaragoza",
-    name: "Mangle Zaragoza",
+    common: "Mangle Zaragoza",
+    sci: "Conocarpus erectus",
     trait: "Especie de transición entre manglar y bosque seco.",
   },
 ];
+
+function SpeciesName({ pair }: { pair: Pair }) {
+  return (
+    <span>
+      {pair.common} (<em>{pair.sci}</em>)
+    </span>
+  );
+}
 
 function DraggableCard({ pair }: { pair: Pair }) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({ id: pair.id });
