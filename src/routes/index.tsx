@@ -346,7 +346,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 1" initialSrc="https://i.imgur.com/vkOuytO.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%201.jpg" alt="Criapez - imagen 1" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -355,7 +355,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 2" initialSrc="https://i.imgur.com/sPBeq9u.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%202.jpg" alt="Criapez - imagen 2" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -367,7 +367,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 3" initialSrc="https://i.imgur.com/2RTGZxC.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%203.jpg" alt="Criapez - imagen 3" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -376,7 +376,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 4" initialSrc="https://i.imgur.com/pWbNg3N.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%204.jpg" alt="Criapez - imagen 4" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
@@ -385,7 +385,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <ImageUpload alt="Criapez - imagen 5" initialSrc="https://i.imgur.com/wOM53TQ.jpeg" />
+                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%205.jpg" alt="Criapez - imagen 5" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
                 <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
                   Fotografía: María de los Ángeles Delgado Villalobos, 2026
                 </figcaption>
