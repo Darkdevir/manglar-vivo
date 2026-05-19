@@ -67,7 +67,9 @@ const accordions = [
 const navLinks = [
   { href: "#inicio", label: "Inicio" },
   { href: "#aprende", label: "Aprende" },
+  { href: "#galeria", label: "Galería" },
   { href: "#interactiva", label: "Zona Interactiva" },
+  { href: "#criapez", label: "Criapez" },
   { href: "#referencias", label: "Referencias" },
 ];
 
