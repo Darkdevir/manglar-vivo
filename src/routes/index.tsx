@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import MangleGame from "@/components/MangleGame";
 import MangleQuiz from "@/components/MangleQuiz";
+import ImageUpload from "@/components/ImageUpload";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -113,7 +114,7 @@ const species = [
   },
 ];
 
-const criapezImages = [1, 2, 3, 4, 5];
+
 
 function Index() {
   const [open, setOpen] = useState<number | null>(null);
@@ -266,16 +267,7 @@ function Index() {
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
               >
-                <div
-                  className="w-full aspect-[4/3] flex items-center justify-center text-center text-sm px-4"
-                  style={{ backgroundColor: "rgba(91,136,178,0.15)", color: "#5B88B2" }}
-                >
-                  {s.image ? (
-                    <img src={s.image} alt={`${s.common} (${s.sci})`} className="w-full h-full object-cover" />
-                  ) : (
-                    <span>Imagen pendiente — subir manualmente</span>
-                  )}
-                </div>
+                <ImageUpload alt={`${s.common} (${s.sci})`} />
                 <div className="p-5 flex flex-col gap-3">
                   <h3 className="text-xl font-bold">
                     {s.common} (<em>{s.sci}</em>)
@@ -340,6 +332,41 @@ function Index() {
           >
             🤝 Criapez: Guardianes de la Ciénaga
           </h2>
+          {/* Imágenes primero */}
+          <div className="space-y-5 mb-10">
+            {/* Fila 1: 2 imágenes centradas */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:max-w-2xl sm:mx-auto">
+              {[1, 2].map((n) => (
+                <figure
+                  key={n}
+                  className="rounded-xl overflow-hidden border flex flex-col"
+                  style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+                >
+                  <ImageUpload alt={`Criapez - imagen ${n}`} />
+                  <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                    Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            {/* Fila 2: 3 imágenes en cuadrícula */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {[3, 4, 5].map((n) => (
+                <figure
+                  key={n}
+                  className="rounded-xl overflow-hidden border flex flex-col"
+                  style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
+                >
+                  <ImageUpload alt={`Criapez - imagen ${n}`} />
+                  <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+                    Fotografía: María de los Ángeles Delgado Villalobos, 2026
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          {/* Texto narrativo */}
           <div
             className="p-6 sm:p-8 rounded-xl space-y-5 text-base sm:text-lg leading-relaxed"
             style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
@@ -358,8 +385,8 @@ function Index() {
             </p>
             <p>
               Entre lo que hacen, cultivan peces sábalo en estanques, mantienen un vivero propio
-              con plántulas de mangle rojo, negro y blanco, y han logrado recuperar zonas muy
-              afectadas como los kilómetros 38, 21 y 21.800 de la Vía Parque Isla de Salamanca.
+              con plántulas de mangle rojo, negro y blanco, y han logrado recuperar zonas criticas
+              de la Vía Parque Isla de Salamanca.
             </p>
             <p>
               También reciben estudiantes y académicos para hacer turismo científico y
@@ -377,26 +404,6 @@ function Index() {
               ciénaga. Han pasado de sentirse víctimas de los problemas ambientales a ser
               protagonistas de las soluciones.
             </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {criapezImages.map((n) => (
-              <figure
-                key={n}
-                className="rounded-xl overflow-hidden border flex flex-col"
-                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-              >
-                <div
-                  className="w-full aspect-[4/3] flex items-center justify-center text-center text-sm px-4"
-                  style={{ backgroundColor: "rgba(91,136,178,0.15)", color: "#5B88B2" }}
-                >
-                  Imagen {n} — subir manualmente
-                </div>
-                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                </figcaption>
-              </figure>
-            ))}
           </div>
         </div>
       </section>
@@ -422,6 +429,13 @@ function Index() {
               ))}
             </ul>
           </div>
+          <p
+            className="mt-10 text-center text-sm italic"
+            style={{ color: "#5B88B2", opacity: 0.85 }}
+          >
+            Realizado por las estudiantes María de los Ángeles Delgado Villalobos y Vanessa Ginet
+            Zabalas Ariza
+          </p>
         </div>
       </section>
 
