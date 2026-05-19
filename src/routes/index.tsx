@@ -94,7 +94,7 @@ const species = [
   {
     common: "Mangle Negro",
     sci: "Avicennia germinans",
-    image: "",
+    image: "2aa176e6-86cf-4be1-aa97-459d904d517b.jpg",
     credit: "Fuente: Flora Fauna y Cultura - Riviera Maya, 2022",
     text: "Árbol de hasta 15 metros con raíces aéreas verticales llamadas neumatóforos (parecen dedos que salen del suelo). Estas raíces permiten el intercambio de gases en suelos anegados. Es una especie altamente tolerante a la salinidad y contribuye a la estabilización del suelo y la captura de carbono azul (Bernal et al., 2024).",
   },
