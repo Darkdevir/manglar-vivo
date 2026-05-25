@@ -1,8 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MangleGame from "@/components/MangleGame";
 import MangleQuiz from "@/components/MangleQuiz";
-
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,6 +24,20 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
+const REPO = "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public";
+
+const CARD_STYLE: React.CSSProperties = {
+  backgroundImage: "linear-gradient(145deg, #FBF9E4 0%, #f4efd6 100%)",
+  borderColor: "#5B88B2",
+  color: "#000000",
+  borderRadius: 22,
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
+};
+
+const cardClass =
+  "border overflow-hidden flex flex-col hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(0,0,0,0.3)]";
 
 const accordions = [
   {
@@ -71,6 +92,7 @@ const navLinks = [
   { href: "#galeria", label: "Galería" },
   { href: "#interactiva", label: "Zona Interactiva" },
   { href: "#criapez", label: "Criapez" },
+  { href: "#salida", label: "Salida de Campo" },
   { href: "#referencias", label: "Referencias" },
 ];
 
@@ -87,37 +109,145 @@ const species = [
   {
     common: "Mangle Rojo",
     sci: "Rhizophora mangle",
-    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20rojo.jpg",
+    image: `${REPO}/Mangle-rojo.jpg`,
     credit: "Fuente: Aquarium de Biarritz, 2025",
     text: "Árbol de hasta 25 metros, reconocible por sus raíces en forma de zancos que parecen piernas elevándose sobre el agua. Es la base del ecosistema manglárico, ya que sus raíces atrapan sedimentos, crean nuevo suelo y sirven de refugio para peces y crustáceos (Elster et al., 1999). Su importancia radica en ser la primera línea de defensa contra la erosión costera y la 'sala cuna' de cientos de especies acuáticas.",
   },
   {
     common: "Mangle Negro",
     sci: "Avicennia germinans",
-    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20negro.jpg",
+    image: `${REPO}/Mangle-negro.jpg`,
     credit: "Fuente: Flora Fauna y Cultura - Riviera Maya, 2022",
     text: "Árbol de hasta 15 metros con raíces aéreas verticales llamadas neumatóforos (parecen dedos que salen del suelo). Estas raíces permiten el intercambio de gases en suelos anegados. Es una especie altamente tolerante a la salinidad y contribuye a la estabilización del suelo y la captura de carbono azul (Bernal et al., 2024).",
   },
   {
     common: "Mangle Blanco",
     sci: "Laguncularia racemosa",
-    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20blanco.JPG",
+    image: `${REPO}/Mangle-blanco.JPG`,
     credit: "Fuente: Vademécum de Salud y Ambiente, 2013",
     text: "Árbol de hasta 12 metros, conocido localmente como 'bobo' por su versatilidad y adaptación a diferentes condiciones ambientales. Sus hojas son redondeadas con dos glándulas secretoras de sal en la base. Su función principal es colonizar zonas de transición y contribuir a la diversidad estructural del manglar (Ortiz Ruiz, 2002).",
   },
   {
     common: "Mangle Zaragoza",
     sci: "Conocarpus erectus",
-    image: "https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Mangle%20zaragosa.jpg",
+    image: `${REPO}/Mangle-zaragosa.jpeg`,
     credit: "Fuente: Tyler Duby, iNaturalist, 2025 (CC-BY-NC)",
     text: "Árbol o arbusto de hasta 20 metros, común en zonas de transición entre el manglar y el bosque seco. A diferencia de los demás, no tiene raíces aéreas vistosas, pero es clave como especie de conexión ecológica. Su importancia radica en que sirve de hábitat para aves migratorias y estabiliza el suelo en áreas menos inundadas (Elster et al., 1999).",
   },
 ];
 
+type MediaItem = { type: "image" | "video"; src: string; credit: string; alt: string };
 
+const MDV = "Foto: María de los Ángeles Delgado Villalobos, 2026";
+const MDV_V = "Video: María de los Ángeles Delgado Villalobos, 2026";
+const MRS = "Foto: María Margarita Rosa Sierra, 2026";
+const MJS = "Foto: María José Sánchez, 2026";
+
+const stations: { emoji: string; title: string; description: string; media: MediaItem[] }[] = [
+  {
+    emoji: "🌊",
+    title: "Estación 1 · Restauración y avistamiento de aves",
+    description:
+      "En lancha observamos aves migratorias (garzas, pelícanos). Cada estudiante sembró un mangle en zona degradada, adoptando simbólicamente su propio árbol.",
+    media: [
+      { type: "image", src: `${REPO}/Fotogarza.jpg`, credit: MDV, alt: "Garza en la ciénaga" },
+      { type: "image", src: `${REPO}/Fotolago.jpg`, credit: MDV, alt: "Vista del lago" },
+      { type: "image", src: `${REPO}/Profe-4.jpg`, credit: MRS, alt: "Salida con la profesora" },
+      { type: "video", src: `${REPO}/Bandada.mp4`, credit: MDV_V, alt: "Bandada de aves" },
+      { type: "video", src: `${REPO}/Garza.mp4`, credit: MDV_V, alt: "Garza en vuelo" },
+      { type: "video", src: `${REPO}/Lago.mp4`, credit: MDV_V, alt: "Lago en la ciénaga" },
+      { type: "video", src: `${REPO}/Videomanglerojo.mp4`, credit: MDV_V, alt: "Mangle rojo" },
+    ],
+  },
+  {
+    emoji: "🚶",
+    title: "Estación 2 · Sendero ecológico y recolección de residuos",
+    description:
+      "Caminata por sendero educativo: recogimos plásticos, icopor y residuos aprovechables. Aprendimos a separar residuos en la fuente.",
+    media: [
+      { type: "image", src: `${REPO}/Mary-1.jpg`, credit: MJS, alt: "Sendero ecológico 1" },
+      { type: "image", src: `${REPO}/Mary-2.jpg`, credit: MJS, alt: "Sendero ecológico 2" },
+      { type: "image", src: `${REPO}/Mary-3.jpg`, credit: MJS, alt: "Sendero ecológico 3" },
+      { type: "image", src: `${REPO}/Profestacion2-1.jpg`, credit: MRS, alt: "Estación 2 - 1" },
+      { type: "image", src: `${REPO}/Profestacion2-2.jpg`, credit: MRS, alt: "Estación 2 - 2" },
+      { type: "image", src: `${REPO}/Profestacion2-3.jpg`, credit: MRS, alt: "Estación 2 - 3" },
+    ],
+  },
+  {
+    emoji: "🌿",
+    title: "Estación 3 · Vivero de manglar",
+    description:
+      "Preparamos sustrato (lodo + arena + nutrientes), llenamos bolsas y sembramos plántulas de mangle rojo, negro, blanco y zaragoza.",
+    media: [
+      { type: "image", src: `${REPO}/Palito-1.jpg`, credit: MDV, alt: "Plántula 1" },
+      { type: "image", src: `${REPO}/Palito-3.jpg`, credit: MDV, alt: "Plántula 3" },
+      { type: "image", src: `${REPO}/Mangle-3.jpg`, credit: MDV, alt: "Mangle 3" },
+      { type: "image", src: `${REPO}/Manglesvarios.jpg`, credit: MDV, alt: "Varios mangles" },
+      { type: "image", src: `${REPO}/Profestacion3-1.jpg`, credit: MRS, alt: "Estación 3 - 1" },
+      { type: "image", src: `${REPO}/Profestacion3-2.jpg`, credit: MRS, alt: "Estación 3 - 2" },
+    ],
+  },
+];
+
+const criapezImages = [1, 2, 3, 4, 5].map((i) => `${REPO}/Cria-${i}.jpg`);
+
+function CriapezFigure({ src, alt }: { src: string; alt: string }) {
+  return (
+    <figure className={cardClass} style={CARD_STYLE}>
+      <img
+        src={src}
+        alt={alt}
+        className="w-full aspect-[4/3] object-cover"
+        loading="lazy"
+        draggable={false}
+      />
+      <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+        Fotografía: María de los Ángeles Delgado Villalobos, 2026
+      </figcaption>
+    </figure>
+  );
+}
+
+function MediaTile({ item }: { item: MediaItem }) {
+  return (
+    <figure className={cardClass} style={CARD_STYLE}>
+      {item.type === "image" ? (
+        <img
+          src={item.src}
+          alt={item.alt}
+          className="w-full aspect-[4/3] object-cover"
+          loading="lazy"
+          draggable={false}
+        />
+      ) : (
+        <video
+          src={item.src}
+          controls
+          preload="metadata"
+          className="w-full aspect-[4/3] object-cover bg-black"
+        />
+      )}
+      <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
+        {item.credit}
+      </figcaption>
+    </figure>
+  );
+}
 
 function Index() {
   const [open, setOpen] = useState<number | null>(null);
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const [selected, setSelected] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    const onSelect = () => setSelected(api.selectedScrollSnap());
+    onSelect();
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
 
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, hash: string) => {
     e.preventDefault();
@@ -161,7 +291,11 @@ function Index() {
         <div className="max-w-3xl mx-auto text-center">
           <span
             className="inline-block px-3 py-1 rounded-full text-xs font-medium tracking-wider mb-6 border"
-            style={{ color: "#FBF9E4", borderColor: "#5B88B2", backgroundColor: "rgba(91,136,178,0.15)" }}
+            style={{
+              color: "#FBF9E4",
+              borderColor: "#5B88B2",
+              backgroundColor: "rgba(91,136,178,0.15)",
+            }}
           >
             ECOSISTEMA RAMSAR · MAGDALENA, COLOMBIA
           </span>
@@ -204,22 +338,19 @@ function Index() {
             {accordions.map((item, i) => {
               const isOpen = open === i;
               return (
-                <div
-                  key={i}
-                  className="overflow-hidden border"
-                  style={{
-                    backgroundColor: "#FBF9E4",
-                    borderRadius: 12,
-                    borderColor: "#5B88B2",
-                  }}
-                >
+                <div key={i} className={`${cardClass} border`} style={CARD_STYLE}>
                   <button
                     onClick={() => setOpen(isOpen ? null : i)}
                     className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
                     style={{ color: "#000000" }}
                     aria-expanded={isOpen}
                   >
-                    <span className="font-semibold text-base sm:text-lg">{item.title}</span>
+                    <span className="font-semibold text-base sm:text-lg">
+                      <span className="text-[1.8rem] align-middle mr-2">
+                        {item.title.split(" ")[0]}
+                      </span>
+                      {item.title.substring(item.title.indexOf(" ") + 1)}
+                    </span>
                     <span
                       className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full text-white text-xl font-bold"
                       style={{ backgroundColor: "#5B88B2" }}
@@ -241,7 +372,7 @@ function Index() {
           </div>
 
           <div
-            className="mt-10 p-6 rounded-xl text-white text-center text-base sm:text-lg leading-relaxed"
+            className="mt-10 p-6 rounded-[22px] text-white text-center text-base sm:text-lg leading-relaxed"
             style={{ backgroundColor: "#5B88B2" }}
           >
             La Ciénaga Grande es un humedal de importancia internacional RAMSAR y un "aeropuerto" de
@@ -258,15 +389,12 @@ function Index() {
             className="text-3xl sm:text-4xl font-bold mb-10 text-center"
             style={{ color: "#FBF9E4" }}
           >
-            🌿 Galería de Manglares
+            <span className="text-[1.8rem] align-middle mr-2">🌿</span>
+            Galería de Manglares
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {species.map((s) => (
-              <div
-                key={s.sci}
-                className="rounded-xl overflow-hidden border flex flex-col"
-                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-              >
+              <div key={s.sci} className={`${cardClass} border`} style={CARD_STYLE}>
                 <img
                   src={s.image}
                   alt={`${s.common} (${s.sci})`}
@@ -299,7 +427,6 @@ function Index() {
             Zona Interactiva
           </h2>
 
-          {/* BLOQUE 1 - JUEGO */}
           <div className="mb-20">
             <h3
               className="text-2xl sm:text-3xl font-bold mb-3 text-center"
@@ -313,7 +440,6 @@ function Index() {
             <MangleGame />
           </div>
 
-          {/* BLOQUE 2 - TEST */}
           <div>
             <h3
               className="text-2xl sm:text-3xl font-bold mb-3 text-center"
@@ -336,66 +462,24 @@ function Index() {
             className="text-3xl sm:text-4xl font-bold mb-10 text-center"
             style={{ color: "#FBF9E4" }}
           >
-            🤝 Criapez: Guardianes de la Ciénaga
+            <span className="text-[1.8rem] align-middle mr-2">🤝</span>
+            Criapez: Guardianes de la Ciénaga
           </h2>
-          {/* Imágenes primero */}
+
           <div className="space-y-5 mb-10">
-            {/* Fila 1: 2 imágenes centradas */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:max-w-2xl sm:mx-auto">
-              <figure
-                className="rounded-xl overflow-hidden border flex flex-col"
-                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-              >
-                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%201.jpg" alt="Criapez - imagen 1" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
-                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                </figcaption>
-              </figure>
-              <figure
-                className="rounded-xl overflow-hidden border flex flex-col"
-                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-              >
-                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%202.jpg" alt="Criapez - imagen 2" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
-                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                </figcaption>
-              </figure>
+              <CriapezFigure src={criapezImages[0]} alt="Criapez - imagen 1" />
+              <CriapezFigure src={criapezImages[1]} alt="Criapez - imagen 2" />
             </div>
-            {/* Fila 2: 3 imágenes en cuadrícula */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              <figure
-                className="rounded-xl overflow-hidden border flex flex-col"
-                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-              >
-                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%203.jpg" alt="Criapez - imagen 3" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
-                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                </figcaption>
-              </figure>
-              <figure
-                className="rounded-xl overflow-hidden border flex flex-col"
-                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-              >
-                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%204.jpg" alt="Criapez - imagen 4" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
-                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                </figcaption>
-              </figure>
-              <figure
-                className="rounded-xl overflow-hidden border flex flex-col"
-                style={{ backgroundColor: "#FBF9E4", borderColor: "#5B88B2", color: "#000000" }}
-              >
-                <img src="https://raw.githubusercontent.com/Darkdevir/manglar-vivo/main/Public/Cria%205.jpg" alt="Criapez - imagen 5" className="w-full aspect-[4/3] object-cover" loading="lazy" draggable={false} />
-                <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
-                  Fotografía: María de los Ángeles Delgado Villalobos, 2026
-                </figcaption>
-              </figure>
+              <CriapezFigure src={criapezImages[2]} alt="Criapez - imagen 3" />
+              <CriapezFigure src={criapezImages[3]} alt="Criapez - imagen 4" />
+              <CriapezFigure src={criapezImages[4]} alt="Criapez - imagen 5" />
             </div>
           </div>
 
-          {/* Texto narrativo */}
           <div
-            className="p-6 sm:p-8 rounded-xl space-y-5 text-base sm:text-lg leading-relaxed"
+            className="p-6 sm:p-8 rounded-[22px] space-y-5 text-base sm:text-lg leading-relaxed"
             style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
           >
             <p>
@@ -431,6 +515,68 @@ function Index() {
               ciénaga. Han pasado de sentirse víctimas de los problemas ambientales a ser
               protagonistas de las soluciones.
             </p>
+            <p>
+              Estas actividades no son solo para estudiantes. Criapez abre sus puertas a quien
+              quiera conocer de cerca la restauración de manglares, el trabajo comunitario y la
+              riqueza de la Ciénaga. La experiencia está ahí, en la Isla del Rosario, esperando
+              por quienes quieran aprender, sembrar y transformarse.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SALIDA DE CAMPO */}
+      <section id="salida" className="py-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-3 text-center"
+            style={{ color: "#FBF9E4" }}
+          >
+            <span className="text-[1.8rem] align-middle mr-2">🌱</span>
+            Nuestra Salida de Campo: Vive la Ciénaga
+          </h2>
+          <p className="text-center mb-10 text-sm sm:text-base" style={{ color: "#5B88B2" }}>
+            Tres estaciones para conocer, restaurar y proteger el manglar.
+          </p>
+
+          <Carousel setApi={setApi} opts={{ loop: true }} className="px-2 sm:px-12">
+            <CarouselContent>
+              {stations.map((st) => (
+                <CarouselItem key={st.title}>
+                  <div className="p-6 sm:p-8 border" style={CARD_STYLE}>
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-3 flex items-center gap-3">
+                      <span className="text-[1.8rem]">{st.emoji}</span>
+                      {st.title}
+                    </h3>
+                    <p className="text-base sm:text-lg leading-relaxed mb-6">{st.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                      {st.media.map((m) => (
+                        <MediaTile key={m.src} item={m} />
+                      ))}
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
+          </Carousel>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {stations.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Ir a estación ${i + 1}`}
+                onClick={() => api?.scrollTo(i)}
+                className="h-3 rounded-full transition-all"
+                style={{
+                  width: selected === i ? 28 : 12,
+                  backgroundColor: selected === i ? "#FBF9E4" : "#5B88B2",
+                  opacity: selected === i ? 1 : 0.6,
+                }}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -445,7 +591,7 @@ function Index() {
             Referencias
           </h2>
           <div
-            className="p-6 sm:p-8 rounded-xl"
+            className="p-6 sm:p-8 rounded-[22px]"
             style={{ backgroundColor: "#FBF9E4", color: "#000000" }}
           >
             <ul className="space-y-3 list-disc list-inside">
@@ -456,14 +602,18 @@ function Index() {
               ))}
             </ul>
           </div>
-          <p
-            className="mt-10 text-center text-sm italic"
-            style={{ color: "#5B88B2", opacity: 0.85 }}
-          >
-            Realizado por las estudiantes María de los Ángeles Delgado Villalobos y Vanessa Ginet
-            Zabalas Ariza
-          </p>
         </div>
+      </section>
+
+      {/* CRÉDITO FINAL */}
+      <section className="px-4 pb-10">
+        <p
+          className="text-center text-sm italic"
+          style={{ color: "#5B88B2", opacity: 0.7 }}
+        >
+          Realizado por las estudiantes María de los Ángeles Delgado Villalobos y Vanessa Ginet
+          Zabalas Ariza
+        </p>
       </section>
 
       <footer
