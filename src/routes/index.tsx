@@ -597,43 +597,16 @@ function Index() {
             Tres estaciones para conocer, restaurar y proteger el manglar.
           </p>
 
-          <Carousel setApi={setApi} opts={{ loop: true }} className="px-2 sm:px-12">
-            <CarouselContent>
-              {stations.map((st) => (
-                <CarouselItem key={st.title}>
-                  <div className="p-6 sm:p-8 border" style={CARD_STYLE}>
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-3 flex items-center gap-3">
-                      <span className="text-[1.8rem]">{st.emoji}</span>
-                      {st.title}
-                    </h3>
-                    <p className="text-base sm:text-lg leading-relaxed mb-6">{st.description}</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {st.media.map((m) => (
-                        <MediaTile key={m.src} item={m} />
-                      ))}
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
-            {stations.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Ir a estación ${i + 1}`}
-                onClick={() => api?.scrollTo(i)}
-                className="h-3 rounded-full transition-all"
-                style={{
-                  width: selected === i ? 28 : 12,
-                  backgroundColor: selected === i ? "#FBF9E4" : "#5B88B2",
-                  opacity: selected === i ? 1 : 0.6,
-                }}
-              />
+          <div className="space-y-12">
+            {stations.map((st) => (
+              <div key={st.title} className="p-6 sm:p-8 border" style={CARD_STYLE}>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-3 flex items-center gap-3">
+                  <span className="text-[1.8rem]">{st.emoji}</span>
+                  {st.title}
+                </h3>
+                <p className="text-base sm:text-lg leading-relaxed mb-6">{st.description}</p>
+                <StationCarousel media={st.media} />
+              </div>
             ))}
           </div>
         </div>
