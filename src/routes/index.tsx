@@ -144,6 +144,7 @@ const stations: { emoji: string; title: string; description: string; media: Medi
     media: [
       { type: "image", src: `${REPO}/Fotogarza.jpg`, credit: MDV, alt: "Garza en la ciénaga" },
       { type: "image", src: `${REPO}/Fotolago.jpg`, credit: MDV, alt: "Vista del lago" },
+      { type: "image", src: `${REPO}/Mangleylago.jpg`, credit: MDV, alt: "Mangle y lago" },
       { type: "image", src: `${REPO}/Profe-4.jpg`, credit: MRS, alt: "Salida con la profesora" },
       { type: "video", src: `${REPO}/Bandada.mp4`, credit: MDV_V, alt: "Bandada de aves" },
       { type: "video", src: `${REPO}/Garza.mp4`, credit: MDV_V, alt: "Garza en vuelo" },
@@ -160,9 +161,9 @@ const stations: { emoji: string; title: string; description: string; media: Medi
       { type: "image", src: `${REPO}/Mary-1.jpg`, credit: MJS, alt: "Sendero ecológico 1" },
       { type: "image", src: `${REPO}/Mary-2.jpg`, credit: MJS, alt: "Sendero ecológico 2" },
       { type: "image", src: `${REPO}/Mary-3.jpg`, credit: MJS, alt: "Sendero ecológico 3" },
-      { type: "image", src: `${REPO}/Profestacion2-1.jpg`, credit: MRS, alt: "Estación 2 - 1" },
-      { type: "image", src: `${REPO}/Profestacion2-2.jpg`, credit: MRS, alt: "Estación 2 - 2" },
-      { type: "image", src: `${REPO}/Profestacion2-3.jpg`, credit: MRS, alt: "Estación 2 - 3" },
+      { type: "image", src: `${REPO}/Profeestacion2-1.jpg`, credit: MRS, alt: "Estación 2 - 1" },
+      { type: "image", src: `${REPO}/Profeestacion2-2.jpg`, credit: MRS, alt: "Estación 2 - 2" },
+      { type: "image", src: `${REPO}/Profeestacion2-3.jpg`, credit: MRS, alt: "Estación 2 - 3" },
     ],
   },
   {
