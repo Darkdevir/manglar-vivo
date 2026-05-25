@@ -439,7 +439,7 @@ function Index() {
           >
             Manglares de la Ciénaga Grande: Guardianes del Agua y la Vida
           </h1>
-          <p className="text-lg sm:text-xl mb-6" style={{ color: "#5B88B2" }}>
+          <p className="text-lg sm:text-xl mb-6" style={{ color: "#FBF9E4" }}>
             Educación ambiental para la conservación de un ecosistema Ramsar en el Magdalena, Colombia
           </p>
           <p className="text-base sm:text-lg leading-relaxed mb-10" style={{ color: "#FBF9E4" }}>
@@ -570,7 +570,7 @@ function Index() {
             >
               🌿 Empareja las Especies de Mangle 🌊
             </h3>
-            <p className="text-center mb-8 text-sm sm:text-base" style={{ color: "#5B88B2" }}>
+            <p className="text-center mb-8 text-sm sm:text-base" style={{ color: "#FBF9E4" }}>
               Arrastra cada especie hacia su característica correcta.
             </p>
             <MangleGame />
@@ -583,7 +583,7 @@ function Index() {
             >
               📝 Pon a prueba tus conocimientos
             </h3>
-            <p className="text-center mb-8 text-sm sm:text-base" style={{ color: "#5B88B2" }}>
+            <p className="text-center mb-8 text-sm sm:text-base" style={{ color: "#FBF9E4" }}>
               10 preguntas de opción múltiple. ¡Mucha suerte!
             </p>
             <MangleQuiz />
@@ -671,7 +671,7 @@ function Index() {
             <span className="text-[1.8rem] align-middle mr-2">🌱</span>
             Nuestra Salida de Campo: Vive la Ciénaga
           </h2>
-          <p className="text-center mb-10 text-sm sm:text-base" style={{ color: "#5B88B2" }}>
+          <p className="text-center mb-10 text-sm sm:text-base" style={{ color: "#FBF9E4" }}>
             Tres estaciones para conocer, restaurar y proteger el manglar.
           </p>
 
