@@ -376,8 +376,8 @@ function Index() {
           </p>
           <button
             onClick={(e) => scrollTo(e, "#aprende")}
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-medium text-white transition-transform hover:scale-105"
-            style={{ backgroundColor: "#5B88B2" }}
+            className="inline-flex items-center gap-2 px-8 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-[#122C4F]"
+            style={{ backgroundColor: "#5B88B2", borderRadius: 40 }}
           >
             Explorar →
           </button>
