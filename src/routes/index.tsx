@@ -248,13 +248,14 @@ function StationCarousel({ media }: { media: MediaItem[] }) {
     const el = scrollerRef.current;
     if (!el) return;
     el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+    setActive(i);
   };
 
-  const next = () => scrollToIndex(Math.min(active + 1, media.length - 1));
-  const prev = () => scrollToIndex(Math.max(active - 1, 0));
+  const next = () => scrollToIndex(active >= media.length - 1 ? 0 : active + 1);
+  const prev = () => scrollToIndex(active <= 0 ? media.length - 1 : active - 1);
 
   return (
-    <div className="relative">
+    <div className="relative px-10 sm:px-12">
       <div
         ref={scrollerRef}
         onScroll={updateActive}
@@ -270,7 +271,7 @@ function StationCarousel({ media }: { media: MediaItem[] }) {
       <button
         onClick={prev}
         aria-label="Anterior"
-        className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-white shadow-lg transition-colors hover:bg-[#122C4F]"
+        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#122C4F] z-10"
         style={{ backgroundColor: "#5B88B2" }}
       >
         ←
@@ -278,7 +279,7 @@ function StationCarousel({ media }: { media: MediaItem[] }) {
       <button
         onClick={next}
         aria-label="Siguiente"
-        className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-white shadow-lg transition-colors hover:bg-[#122C4F]"
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#122C4F] z-10"
         style={{ backgroundColor: "#5B88B2" }}
       >
         →
@@ -292,8 +293,8 @@ function StationCarousel({ media }: { media: MediaItem[] }) {
             className="h-3 rounded-full transition-all"
             style={{
               width: active === i ? 28 : 12,
-              backgroundColor: active === i ? "#FBF9E4" : "#5B88B2",
-              opacity: active === i ? 1 : 0.6,
+              backgroundColor: active === i ? "#5B88B2" : "#FBF9E4",
+              opacity: active === i ? 1 : 0.5,
             }}
           />
         ))}
