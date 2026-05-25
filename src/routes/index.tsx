@@ -455,13 +455,15 @@ function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {species.map((s) => (
               <div key={s.sci} className={`${cardClass} border`} style={CARD_STYLE}>
-                <img
-                  src={s.image}
-                  alt={`${s.common} (${s.sci})`}
-                  className="w-full aspect-[4/3] object-cover"
-                  loading="lazy"
-                  draggable={false}
-                />
+                <div className="overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={`${s.common} (${s.sci})`}
+                    className="w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                    draggable={false}
+                  />
+                </div>
                 <div className="p-5 flex flex-col gap-3">
                   <h3 className="text-xl font-bold">
                     {s.common} (<em>{s.sci}</em>)
