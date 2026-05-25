@@ -731,6 +731,7 @@ function Index() {
       >
         © Universidad del Magdalena · Ingeniería Agronómica
       </footer>
+      </div>
     </div>
   );
 }
