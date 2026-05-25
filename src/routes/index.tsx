@@ -176,8 +176,9 @@ const stations: { emoji: string; title: string; description: string; media: Medi
       { type: "image", src: `${REPO}/Palito-3.jpg`, credit: MDV, alt: "Plántula 3" },
       { type: "image", src: `${REPO}/Mangle-3.jpg`, credit: MDV, alt: "Mangle 3" },
       { type: "image", src: `${REPO}/Manglesvarios.jpg`, credit: MDV, alt: "Varios mangles" },
-      { type: "image", src: `${REPO}/Profestacion3-1.jpg`, credit: MRS, alt: "Estación 3 - 1" },
-      { type: "image", src: `${REPO}/Profestacion3-2.jpg`, credit: MRS, alt: "Estación 3 - 2" },
+      { type: "image", src: `${REPO}/Profeestacion3-1.jpg`, credit: MRS, alt: "Estación 3 - 1" },
+      { type: "image", src: `${REPO}/Profeestacion3-2.jpg`, credit: MRS, alt: "Estación 3 - 2" },
+      { type: "image", src: `${REPO}/Profeestacion3-3.jpg`, credit: MRS, alt: "Estación 3 - 3" },
     ],
   },
 ];
