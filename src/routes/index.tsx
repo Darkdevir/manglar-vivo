@@ -314,9 +314,82 @@ function Index() {
 
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen relative overflow-hidden"
       style={{ backgroundImage: "linear-gradient(180deg, #122C4F 0%, #1a3a5f 100%)" }}
     >
+      {/* Fondo decorativo: siluetas de manglares, raíces y olas */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{ opacity: 0.12 }}
+      >
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1200 1600"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern id="waves" x="0" y="0" width="200" height="40" patternUnits="userSpaceOnUse">
+              <path
+                d="M0 20 Q 50 0 100 20 T 200 20"
+                stroke="#FBF9E4"
+                strokeWidth="1.5"
+                fill="none"
+              />
+            </pattern>
+            <pattern id="leaves" x="0" y="0" width="180" height="180" patternUnits="userSpaceOnUse">
+              <path
+                d="M90 30 Q 130 80 90 150 Q 50 80 90 30 Z"
+                fill="#5B88B2"
+                opacity="0.6"
+              />
+              <path d="M90 30 L 90 150" stroke="#FBF9E4" strokeWidth="0.8" opacity="0.5" />
+            </pattern>
+          </defs>
+          {/* Bandas de olas */}
+          <rect x="0" y="0" width="1200" height="1600" fill="url(#waves)" opacity="0.35" />
+          {/* Hojas dispersas */}
+          <rect x="0" y="0" width="1200" height="1600" fill="url(#leaves)" opacity="0.25" />
+          {/* Siluetas de manglares con raíces */}
+          <g fill="#FBF9E4" opacity="0.55">
+            {/* Manglar izquierdo */}
+            <ellipse cx="150" cy="280" rx="120" ry="80" />
+            <ellipse cx="120" cy="220" rx="80" ry="55" />
+            <ellipse cx="190" cy="220" rx="70" ry="50" />
+            <path
+              d="M150 350 L 130 520 M 150 350 L 100 540 M 150 350 L 170 520 M 150 350 L 200 540 M 150 350 L 80 530 M 150 350 L 220 530"
+              stroke="#FBF9E4"
+              strokeWidth="3"
+              fill="none"
+            />
+            {/* Manglar derecho */}
+            <ellipse cx="1050" cy="900" rx="140" ry="90" />
+            <ellipse cx="1010" cy="830" rx="90" ry="60" />
+            <ellipse cx="1100" cy="830" rx="80" ry="55" />
+            <path
+              d="M1050 980 L 1020 1180 M 1050 980 L 990 1200 M 1050 980 L 1080 1180 M 1050 980 L 1120 1200 M 1050 980 L 950 1190 M 1050 980 L 1150 1190"
+              stroke="#FBF9E4"
+              strokeWidth="3"
+              fill="none"
+            />
+            {/* Manglar centro-bajo */}
+            <ellipse cx="600" cy="1380" rx="160" ry="100" />
+            <ellipse cx="540" cy="1300" rx="100" ry="65" />
+            <ellipse cx="660" cy="1300" rx="100" ry="65" />
+            <path
+              d="M600 1470 L 560 1600 M 600 1470 L 530 1600 M 600 1470 L 640 1600 M 600 1470 L 680 1600 M 600 1470 L 490 1600 M 600 1470 L 710 1600"
+              stroke="#FBF9E4"
+              strokeWidth="3"
+              fill="none"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <div className="relative z-10">
+
 
       {/* NAV */}
       <nav
