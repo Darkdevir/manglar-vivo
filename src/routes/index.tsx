@@ -188,13 +188,15 @@ const criapezImages = [1, 2, 3, 4, 5].map((i) => `${REPO}/Cria-${i}.jpg`);
 function CriapezFigure({ src, alt }: { src: string; alt: string }) {
   return (
     <figure className={cardClass} style={CARD_STYLE}>
-      <img
-        src={src}
-        alt={alt}
-        className="w-full aspect-[4/3] object-cover"
-        loading="lazy"
-        draggable={false}
-      />
+      <div className="overflow-hidden">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105"
+          loading="lazy"
+          draggable={false}
+        />
+      </div>
       <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
         Fotografía: María de los Ángeles Delgado Villalobos, 2026
       </figcaption>
