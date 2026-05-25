@@ -1,15 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MangleGame from "@/components/MangleGame";
 import MangleQuiz from "@/components/MangleQuiz";
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
