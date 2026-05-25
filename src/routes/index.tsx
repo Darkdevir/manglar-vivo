@@ -205,22 +205,24 @@ function CriapezFigure({ src, alt }: { src: string; alt: string }) {
 function MediaTile({ item }: { item: MediaItem }) {
   return (
     <figure className={cardClass} style={CARD_STYLE}>
-      {item.type === "image" ? (
-        <img
-          src={item.src}
-          alt={item.alt}
-          className="w-full aspect-[4/3] object-cover"
-          loading="lazy"
-          draggable={false}
-        />
-      ) : (
-        <video
-          src={item.src}
-          controls
-          preload="metadata"
-          className="w-full aspect-[4/3] object-cover bg-black"
-        />
-      )}
+      <div className="overflow-hidden">
+        {item.type === "image" ? (
+          <img
+            src={item.src}
+            alt={item.alt}
+            className="w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105"
+            loading="lazy"
+            draggable={false}
+          />
+        ) : (
+          <video
+            src={item.src}
+            controls
+            preload="metadata"
+            className="w-full aspect-[4/3] object-cover bg-black"
+          />
+        )}
+      </div>
       <figcaption className="text-xs italic p-3" style={{ color: "#5B88B2" }}>
         {item.credit}
       </figcaption>
@@ -228,20 +230,78 @@ function MediaTile({ item }: { item: MediaItem }) {
   );
 }
 
+function StationCarousel({ media }: { media: MediaItem[] }) {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [active, setActive] = useState(0);
+
+  const updateActive = () => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const w = el.clientWidth;
+    if (w === 0) return;
+    setActive(Math.round(el.scrollLeft / w));
+  };
+
+  const scrollToIndex = (i: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+  };
+
+  const next = () => scrollToIndex(Math.min(active + 1, media.length - 1));
+  const prev = () => scrollToIndex(Math.max(active - 1, 0));
+
+  return (
+    <div className="relative">
+      <div
+        ref={scrollerRef}
+        onScroll={updateActive}
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2"
+        style={{ scrollbarWidth: "thin" }}
+      >
+        {media.map((m) => (
+          <div key={m.src} className="snap-start shrink-0 w-full sm:w-[48%] md:w-[32%]">
+            <MediaTile item={m} />
+          </div>
+        ))}
+      </div>
+      <button
+        onClick={prev}
+        aria-label="Anterior"
+        className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-white shadow-lg transition-colors hover:bg-[#122C4F]"
+        style={{ backgroundColor: "#5B88B2" }}
+      >
+        ←
+      </button>
+      <button
+        onClick={next}
+        aria-label="Siguiente"
+        className="absolute right-0 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-white shadow-lg transition-colors hover:bg-[#122C4F]"
+        style={{ backgroundColor: "#5B88B2" }}
+      >
+        →
+      </button>
+      <div className="flex justify-center gap-2 mt-4">
+        {media.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => scrollToIndex(i)}
+            aria-label={`Ir a item ${i + 1}`}
+            className="h-3 rounded-full transition-all"
+            style={{
+              width: active === i ? 28 : 12,
+              backgroundColor: active === i ? "#FBF9E4" : "#5B88B2",
+              opacity: active === i ? 1 : 0.6,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const [open, setOpen] = useState<number | null>(null);
-  const [api, setApi] = useState<CarouselApi | null>(null);
-  const [selected, setSelected] = useState(0);
-
-  useEffect(() => {
-    if (!api) return;
-    const onSelect = () => setSelected(api.selectedScrollSnap());
-    onSelect();
-    api.on("select", onSelect);
-    return () => {
-      api.off("select", onSelect);
-    };
-  }, [api]);
 
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, hash: string) => {
     e.preventDefault();
@@ -250,7 +310,11 @@ function Index() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#122C4F" }}>
+    <div
+      className="min-h-screen"
+      style={{ backgroundImage: "linear-gradient(180deg, #122C4F 0%, #1a3a5f 100%)" }}
+    >
+
       {/* NAV */}
       <nav
         className="fixed top-0 left-0 right-0 z-50 border-b"
